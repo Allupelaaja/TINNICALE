@@ -1,28 +1,9 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
 public class GameController : MonoBehaviour {
-
-	private Slider musicSlider;
-	private Slider effectsSlider;
-	private Button applyButton;
-
-	void Awake () {
-		FindSettingsForm ();
-	}
-
-	public void FindSettingsForm (){
-		if (GameObject.Find ("SoundMusicSlider") != null) {
-			musicSlider = GameObject.Find ("SoundMusicSlider").GetComponent<Slider> ();
-			applyButton = GameObject.Find ("ApplyButton").GetComponent<Button> ();
-			applyButton.onClick.AddListener (ApplySettings);
-		}
-	}
-
-	//Scene change
 
 	public void StartGame() {
 		SceneManager.LoadScene ("test");
@@ -30,6 +11,7 @@ public class GameController : MonoBehaviour {
 
 	public void QuitGame() {
 		Application.Quit ();
+		Debug.Log ("Game Exited");
 	}
 
 	public void LoadAudio() {
@@ -46,19 +28,7 @@ public class GameController : MonoBehaviour {
 		
 	}
 
-	//Background music
-
-	public void ApplySettings() {
-		if (musicSlider != null) {
-			AudioListener.volume = musicSlider.value;
-		}
-	}
-
-	//Back to menu
-
-	void Update () {
-		if (Input.GetKeyDown (KeyCode.Escape)) {
-			SceneManager.LoadScene ("menu");
-		}
+	public void LoadScene(string sceneName) {
+		Application.LoadLevel (sceneName);
 	}
 }
