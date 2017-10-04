@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class DialogSystem : MonoBehaviour {
 
-	private GameController gc;
+	public GameController gc;
 
 	public string Name;
 	public List<string> Dialogues = new List<string>();
