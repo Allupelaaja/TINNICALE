@@ -82,6 +82,7 @@ public class GameController : MonoBehaviour {
 		dialogBox.SetActive (true);
 	}
 
+	//Hides The Dialog
 	public void HideDialogBox() {
 		dialogBox.SetActive (false);
 	}

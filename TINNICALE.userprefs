@@ -1,13 +1,16 @@
 ﻿<Properties StartupItem="Assembly-CSharp.csproj">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Unity.Instance.Unity Editor" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\GameController.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\ScoreSystem.cs">
     <Files>
-      <File FileName="Assets\Scripts\GameController.cs" Line="86" Column="29" />
+      <File FileName="Assets\Scripts\GameController.cs" Line="1" Column="1" />
       <File FileName="Assets\Scripts\MinimapToggle.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\InventoryUIController.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\Player\PlayerController.cs" Line="74" Column="42" />
-      <File FileName="Assets\Scripts\Dialogue\DialogSystem.cs" Line="7" Column="27" />
+      <File FileName="Assets\Scripts\InventoryUIController.cs" Line="21" Column="44" />
+      <File FileName="Assets\Scripts\Player\PlayerController.cs" Line="29" Column="2" />
+      <File FileName="Assets\Scripts\Dialogue\DialogSystem.cs" Line="49" Column="20" />
       <File FileName="Assets\Scripts\ObjectSaver.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\Dialogue\DialogBox.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\Player\Bullet.cs" Line="7" Column="8" />
+      <File FileName="Assets\Scripts\ScoreSystem.cs" Line="29" Column="33" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
