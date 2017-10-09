@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class DialogSystem : MonoBehaviour {
 
+	public int SerialNumber;
+
 	public GameController gc;
 
 	public string Name;
@@ -16,7 +18,7 @@ public class DialogSystem : MonoBehaviour {
 
 	private bool speaking = false;
 
-	void Start () {
+	void Awake () {
 		gc = GameObject.Find ("GameController").GetComponent<GameController>();
 		//StartDialog();
 	}
@@ -30,7 +32,6 @@ public class DialogSystem : MonoBehaviour {
 	}
 
 	public void NextDialog() {
-		Debug.Log ("next dialog");
 		timerToSwitchDialog = 0;
 		if(Dialogues.Count > currentDialog+1){
 			currentDialog++;
@@ -60,9 +61,7 @@ public class DialogSystem : MonoBehaviour {
 	}
 
 	void OnTriggerEnter2D(Collider2D other){
-		Debug.Log ("collider hit");
 		if(other.transform.tag.Equals("Player")){
-			Debug.Log ("hit player");
 			StartDialog ();
 		}
 	}

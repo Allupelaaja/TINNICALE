@@ -762,6 +762,7 @@ GameObject:
   - component: {fileID: 63079969}
   - component: {fileID: 63079971}
   - component: {fileID: 63079972}
+  - component: {fileID: 63079973}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -784,6 +785,10 @@ MonoBehaviour:
   bulletSpawn: {fileID: 63079970}
   bulletPrefab: {fileID: 1428045118797484, guid: e8549a2db051bce4fb8bd8563183e57f,
     type: 2}
+  MinBulletSpeed: 2
+  bulletSpeedMultiplier: 2
+  cups: 0
+  rfid: 0
 --- !u!4 &63079970
 Transform:
   m_ObjectHideFlags: 0
@@ -791,7 +796,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 63079968}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.71, y: -2.24, z: 0}
+  m_LocalPosition: {x: -0.56, y: -2.9, z: 0}
   m_LocalScale: {x: 5, y: 5, z: 1}
   m_Children:
   - {fileID: 1905049254}
@@ -844,6 +849,21 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &63079973
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 63079968}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a44627897b9447c4fb087cfe331b3100, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  scoreText: {fileID: 218010369}
+  score: 0
+  MaxTime: 300
+  MaxTimerPoints: 1000
 --- !u!1 &64665604
 GameObject:
   m_ObjectHideFlags: 0
@@ -1313,7 +1333,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4603887090706328, guid: ade3b2fa567a13640990a57d4363ddac, type: 2}
       propertyPath: m_RootOrder
-      value: 13
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 1092405944080176, guid: ade3b2fa567a13640990a57d4363ddac, type: 2}
       propertyPath: m_Name
@@ -1594,6 +1614,40 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 0.99999994}
   m_EdgeRadius: 0
+--- !u!1 &122968873
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 122968874}
+  m_Layer: 5
+  m_Name: KeySlot
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &122968874
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 122968873}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 513901895}
+  m_Father: {fileID: 848946659}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 1, y: 0.5}
+  m_AnchorMax: {x: 1, y: 0.5}
+  m_AnchoredPosition: {x: -180, y: 0}
+  m_SizeDelta: {x: 35, y: 35}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &127372413
 GameObject:
   m_ObjectHideFlags: 0
@@ -1898,7 +1952,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4603887090706328, guid: ade3b2fa567a13640990a57d4363ddac, type: 2}
       propertyPath: m_RootOrder
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1092405944080176, guid: ade3b2fa567a13640990a57d4363ddac, type: 2}
       propertyPath: m_Name
@@ -2940,6 +2994,80 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!1 &218010367
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 218010368}
+  - component: {fileID: 218010370}
+  - component: {fileID: 218010369}
+  m_Layer: 5
+  m_Name: ScoreText
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &218010368
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 218010367}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 848946659}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0.5}
+  m_AnchorMax: {x: 0, y: 0.5}
+  m_AnchoredPosition: {x: 85, y: 0}
+  m_SizeDelta: {x: 160, y: 30}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &218010369
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 218010367}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 708705254, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+  m_RaycastTarget: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
+      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+  m_FontData:
+    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_FontSize: 14
+    m_FontStyle: 0
+    m_BestFit: 0
+    m_MinSize: 10
+    m_MaxSize: 40
+    m_Alignment: 3
+    m_AlignByGeometry: 0
+    m_RichText: 1
+    m_HorizontalOverflow: 0
+    m_VerticalOverflow: 0
+    m_LineSpacing: 1
+  m_Text: 'Score: 0'
+--- !u!222 &218010370
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 218010367}
 --- !u!1 &220023396
 GameObject:
   m_ObjectHideFlags: 0
@@ -4291,7 +4419,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4603887090706328, guid: ade3b2fa567a13640990a57d4363ddac, type: 2}
       propertyPath: m_RootOrder
-      value: 9
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 1092405944080176, guid: ade3b2fa567a13640990a57d4363ddac, type: 2}
       propertyPath: m_Name
@@ -4432,7 +4560,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4603887090706328, guid: ade3b2fa567a13640990a57d4363ddac, type: 2}
       propertyPath: m_RootOrder
-      value: 8
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 1092405944080176, guid: ade3b2fa567a13640990a57d4363ddac, type: 2}
       propertyPath: m_Name
@@ -5872,6 +6000,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 189db63063a2cd94b84b22b6341677fc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  SerialNumber: 0
   gc: {fileID: 0}
   Name: Student
   Dialogues:
@@ -6102,6 +6231,49 @@ BoxCollider2D:
   m_AutoTiling: 0
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
+  m_EdgeRadius: 0
+--- !u!1 &435101242 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1068126519280710, guid: 8a5d89e6154cf984786d89bb5218886f,
+    type: 2}
+  m_PrefabInternal: {fileID: 947182835}
+--- !u!114 &435101243
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 435101242}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d059c660be6386b49a5d95db7a787d8c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mass: 0
+  rb: {fileID: 0}
+--- !u!61 &435101244
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 435101242}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: -0.0012381822}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 0.32, y: 0.09}
+    newSize: {x: 0.32, y: 0.09}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 0.32, y: 0.4393138}
   m_EdgeRadius: 0
 --- !u!1 &435132200
 GameObject:
@@ -6361,7 +6533,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 0.45
+  m_Radius: 0.30280256
 --- !u!114 &455881435
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6373,6 +6545,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 189db63063a2cd94b84b22b6341677fc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  SerialNumber: 0
   gc: {fileID: 0}
   Name: Student
   Dialogues:
@@ -6567,6 +6740,7 @@ GameObject:
   - component: {fileID: 467513581}
   - component: {fileID: 467513583}
   - component: {fileID: 467513584}
+  - component: {fileID: 467513585}
   m_Layer: 0
   m_Name: NPC_Caretaker
   m_TagString: Untagged
@@ -6640,12 +6814,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 189db63063a2cd94b84b22b6341677fc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  SerialNumber: 0
   gc: {fileID: 0}
   Name: Caretaker
   Dialogues:
   - Hey!
   - Don't have a rfid-key yet?
-  - Get my work done and I may give you one.
+  - Get me a coffee cup and I'll give you one.
   TimeOnDialog: 020000000300000003000000
 --- !u!58 &467513584
 CircleCollider2D:
@@ -6659,9 +6834,20 @@ CircleCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: -0.01649979, y: 0.0013072543}
   serializedVersion: 2
-  m_Radius: 0.45
+  m_Radius: 0.43344846
+--- !u!114 &467513585
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 467513580}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6f61660f3f270c2469427fa61d2270f2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &468879470
 GameObject:
   m_ObjectHideFlags: 0
@@ -7101,6 +7287,74 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!1 &513901894
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 513901895}
+  - component: {fileID: 513901897}
+  - component: {fileID: 513901896}
+  m_Layer: 5
+  m_Name: KeyImage
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &513901895
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 513901894}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 122968874}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0.5}
+  m_AnchorMax: {x: 0, y: 0.5}
+  m_AnchoredPosition: {x: 17.499996, y: 0}
+  m_SizeDelta: {x: 27.432, y: 32}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &513901896
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 513901894}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -765806418, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
+      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+  m_Sprite: {fileID: 21300000, guid: ce684e8a0896d824789a8d5ec2bb40fc, type: 3}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+--- !u!222 &513901897
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 513901894}
 --- !u!1 &524702005
 GameObject:
   m_ObjectHideFlags: 0
@@ -7126,7 +7380,6 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 595079758}
   - {fileID: 135249761}
   - {fileID: 724169030}
   - {fileID: 1247997150}
@@ -7281,6 +7534,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 189db63063a2cd94b84b22b6341677fc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  SerialNumber: 0
   gc: {fileID: 0}
   Name: Student
   Dialogues:
@@ -7473,7 +7727,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4603887090706328, guid: ade3b2fa567a13640990a57d4363ddac, type: 2}
       propertyPath: m_RootOrder
-      value: 14
+      value: 13
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: ade3b2fa567a13640990a57d4363ddac, type: 2}
@@ -7932,6 +8186,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 189db63063a2cd94b84b22b6341677fc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  SerialNumber: 0
   gc: {fileID: 0}
   Name: You
   Dialogues:
@@ -7982,57 +8237,6 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.5
---- !u!1001 &595079757
-Prefab:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 524702006}
-    m_Modifications:
-    - target: {fileID: 4603887090706328, guid: ade3b2fa567a13640990a57d4363ddac, type: 2}
-      propertyPath: m_LocalPosition.x
-      value: -31.05
-      objectReference: {fileID: 0}
-    - target: {fileID: 4603887090706328, guid: ade3b2fa567a13640990a57d4363ddac, type: 2}
-      propertyPath: m_LocalPosition.y
-      value: 7.3
-      objectReference: {fileID: 0}
-    - target: {fileID: 4603887090706328, guid: ade3b2fa567a13640990a57d4363ddac, type: 2}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4603887090706328, guid: ade3b2fa567a13640990a57d4363ddac, type: 2}
-      propertyPath: m_LocalRotation.x
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4603887090706328, guid: ade3b2fa567a13640990a57d4363ddac, type: 2}
-      propertyPath: m_LocalRotation.y
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4603887090706328, guid: ade3b2fa567a13640990a57d4363ddac, type: 2}
-      propertyPath: m_LocalRotation.z
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4603887090706328, guid: ade3b2fa567a13640990a57d4363ddac, type: 2}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4603887090706328, guid: ade3b2fa567a13640990a57d4363ddac, type: 2}
-      propertyPath: m_RootOrder
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1092405944080176, guid: ade3b2fa567a13640990a57d4363ddac, type: 2}
-      propertyPath: m_Name
-      value: Cup (10)
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_ParentPrefab: {fileID: 100100000, guid: ade3b2fa567a13640990a57d4363ddac, type: 2}
-  m_IsPrefabParent: 0
---- !u!4 &595079758 stripped
-Transform:
-  m_PrefabParentObject: {fileID: 4603887090706328, guid: ade3b2fa567a13640990a57d4363ddac,
-    type: 2}
-  m_PrefabInternal: {fileID: 595079757}
 --- !u!1001 &599044199
 Prefab:
   m_ObjectHideFlags: 0
@@ -8318,7 +8522,22 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4603887090706328, guid: ade3b2fa567a13640990a57d4363ddac, type: 2}
       propertyPath: m_RootOrder
-      value: 11
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 212329234771252594, guid: ade3b2fa567a13640990a57d4363ddac,
+        type: 2}
+      propertyPath: m_Color.r
+      value: 0.15294118
+      objectReference: {fileID: 0}
+    - target: {fileID: 212329234771252594, guid: ade3b2fa567a13640990a57d4363ddac,
+        type: 2}
+      propertyPath: m_Color.g
+      value: 0.68235296
+      objectReference: {fileID: 0}
+    - target: {fileID: 212329234771252594, guid: ade3b2fa567a13640990a57d4363ddac,
+        type: 2}
+      propertyPath: m_Color.b
+      value: 0.37647063
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: ade3b2fa567a13640990a57d4363ddac, type: 2}
@@ -8386,6 +8605,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 189db63063a2cd94b84b22b6341677fc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  SerialNumber: 0
   gc: {fileID: 0}
   Name: Student
   Dialogues:
@@ -9098,6 +9318,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 189db63063a2cd94b84b22b6341677fc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  SerialNumber: 0
   gc: {fileID: 0}
   Name: Student
   Dialogues:
@@ -9546,6 +9767,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 189db63063a2cd94b84b22b6341677fc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  SerialNumber: 0
   gc: {fileID: 0}
   Name: Student
   Dialogues:
@@ -9752,7 +9974,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4603887090706328, guid: ade3b2fa567a13640990a57d4363ddac, type: 2}
       propertyPath: m_RootOrder
-      value: 5
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 1092405944080176, guid: ade3b2fa567a13640990a57d4363ddac, type: 2}
       propertyPath: m_Name
@@ -9803,7 +10025,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4603887090706328, guid: ade3b2fa567a13640990a57d4363ddac, type: 2}
       propertyPath: m_RootOrder
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1092405944080176, guid: ade3b2fa567a13640990a57d4363ddac, type: 2}
       propertyPath: m_Name
@@ -10204,6 +10426,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 189db63063a2cd94b84b22b6341677fc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  SerialNumber: 0
   gc: {fileID: 0}
   Name: Student
   Dialogues:
@@ -10624,7 +10847,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4603887090706328, guid: ade3b2fa567a13640990a57d4363ddac, type: 2}
       propertyPath: m_RootOrder
-      value: 6
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 1092405944080176, guid: ade3b2fa567a13640990a57d4363ddac, type: 2}
       propertyPath: m_Name
@@ -11439,6 +11662,8 @@ RectTransform:
   m_Children:
   - {fileID: 799935133}
   - {fileID: 347154296}
+  - {fileID: 122968874}
+  - {fileID: 218010368}
   m_Father: {fileID: 225044950}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -12608,6 +12833,21 @@ Prefab:
       propertyPath: m_Color.r
       value: 0.6392157
       objectReference: {fileID: 0}
+    - target: {fileID: 50298355721471260, guid: 8a5d89e6154cf984786d89bb5218886f,
+        type: 2}
+      propertyPath: m_Mass
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 50298355721471260, guid: 8a5d89e6154cf984786d89bb5218886f,
+        type: 2}
+      propertyPath: m_Simulated
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 50298355721471260, guid: 8a5d89e6154cf984786d89bb5218886f,
+        type: 2}
+      propertyPath: m_UseAutoMass
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 8a5d89e6154cf984786d89bb5218886f, type: 2}
   m_IsPrefabParent: 0
@@ -13044,6 +13284,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 189db63063a2cd94b84b22b6341677fc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  SerialNumber: 0
   gc: {fileID: 0}
   Name: Student
   Dialogues:
@@ -13438,6 +13679,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 189db63063a2cd94b84b22b6341677fc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  SerialNumber: 0
   gc: {fileID: 0}
   Name: Student
   Dialogues:
@@ -14245,6 +14487,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 189db63063a2cd94b84b22b6341677fc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  SerialNumber: 0
   gc: {fileID: 0}
   Name: Student
   Dialogues:
@@ -15170,6 +15413,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 189db63063a2cd94b84b22b6341677fc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  SerialNumber: 0
   gc: {fileID: 0}
   Name: Cook
   Dialogues:
@@ -15305,7 +15549,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4603887090706328, guid: ade3b2fa567a13640990a57d4363ddac, type: 2}
       propertyPath: m_RootOrder
-      value: 12
+      value: 11
       objectReference: {fileID: 0}
     - target: {fileID: 1092405944080176, guid: ade3b2fa567a13640990a57d4363ddac, type: 2}
       propertyPath: m_Name
@@ -16596,7 +16840,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4603887090706328, guid: ade3b2fa567a13640990a57d4363ddac, type: 2}
       propertyPath: m_RootOrder
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 1092405944080176, guid: ade3b2fa567a13640990a57d4363ddac, type: 2}
       propertyPath: m_Name
@@ -17711,7 +17955,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4603887090706328, guid: ade3b2fa567a13640990a57d4363ddac, type: 2}
       propertyPath: m_RootOrder
-      value: 7
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 1092405944080176, guid: ade3b2fa567a13640990a57d4363ddac, type: 2}
       propertyPath: m_Name
@@ -18880,7 +19124,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4603887090706328, guid: ade3b2fa567a13640990a57d4363ddac, type: 2}
       propertyPath: m_RootOrder
-      value: 4
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 1092405944080176, guid: ade3b2fa567a13640990a57d4363ddac, type: 2}
       propertyPath: m_Name
@@ -19347,6 +19591,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 189db63063a2cd94b84b22b6341677fc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  SerialNumber: 0
   gc: {fileID: 0}
   Name: Cook
   Dialogues:
@@ -19644,6 +19889,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 189db63063a2cd94b84b22b6341677fc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  SerialNumber: 0
   gc: {fileID: 0}
   Name: Cook
   Dialogues:
@@ -20578,6 +20824,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 189db63063a2cd94b84b22b6341677fc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  SerialNumber: 0
   gc: {fileID: 0}
   Name: Student
   Dialogues:
@@ -21555,6 +21802,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 189db63063a2cd94b84b22b6341677fc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  SerialNumber: 0
   gc: {fileID: 0}
   Name: Student
   Dialogues:
@@ -21768,6 +22016,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 189db63063a2cd94b84b22b6341677fc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  SerialNumber: 0
   gc: {fileID: 0}
   Name: Librarian
   Dialogues:
@@ -23819,6 +24068,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 189db63063a2cd94b84b22b6341677fc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  SerialNumber: 0
   gc: {fileID: 0}
   Name: Student
   Dialogues:
@@ -24816,7 +25066,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4603887090706328, guid: ade3b2fa567a13640990a57d4363ddac, type: 2}
       propertyPath: m_RootOrder
-      value: 10
+      value: 9
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: ade3b2fa567a13640990a57d4363ddac, type: 2}
@@ -25305,6 +25555,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 189db63063a2cd94b84b22b6341677fc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  SerialNumber: 0
   gc: {fileID: 0}
   Name: Student
   Dialogues:
@@ -25783,6 +26034,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 189db63063a2cd94b84b22b6341677fc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  SerialNumber: 0
   gc: {fileID: 0}
   Name: Student
   Dialogues:
@@ -25985,6 +26237,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 189db63063a2cd94b84b22b6341677fc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  SerialNumber: 0
   gc: {fileID: 0}
   Name: Student
   Dialogues:
@@ -26270,6 +26523,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 189db63063a2cd94b84b22b6341677fc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  SerialNumber: 0
   gc: {fileID: 0}
   Name: Student
   Dialogues:
@@ -26435,6 +26689,7 @@ GameObject:
   - component: {fileID: 2038741489}
   - component: {fileID: 2038741488}
   - component: {fileID: 2038741490}
+  - component: {fileID: 2038741491}
   m_Layer: 0
   m_Name: CoffeeMaker
   m_TagString: Untagged
@@ -26506,12 +26761,25 @@ CircleCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: -0.050189197, y: 0}
   serializedVersion: 2
   m_Radius: 0.34981078
+--- !u!114 &2038741491
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2038741487}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3822c1dbc2cee1e4ebb746fd2a603f99, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  victoryWindow: {fileID: 1599923031798422, guid: 731accdf5ade07343be6172af6958691,
+    type: 2}
 --- !u!1 &2046479251
 GameObject:
   m_ObjectHideFlags: 0

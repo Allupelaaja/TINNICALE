@@ -31,10 +31,8 @@ public class GameController : MonoBehaviour {
 	/***** Finds current scene's UI controls and adds listeners *****/
 	private void FindAndSetUIControls() {
 		string currentScene = SceneManager.GetActiveScene ().name;
-		Debug.Log (currentScene);
 		if(currentScene.Equals("menu")){
 			//Finds MainMenu buttons
-			Debug.Log("MAIN");
 			Button buttonStart = GameObject.Find("ButtonStart").GetComponent<Button>();
 			buttonStart.onClick.AddListener (StartGame);
 			Button buttonOptions = GameObject.Find("ButtonOptions").GetComponent<Button>();
@@ -43,7 +41,6 @@ public class GameController : MonoBehaviour {
 			buttonExit.onClick.AddListener (QuitGame);
 		} else if (currentScene.Equals("audio")) {
 			//Finds Audio buttons
-			Debug.Log("AUDIO");
 			Button buttonBack = GameObject.Find("ButtonBack").GetComponent<Button>();
 			buttonBack.onClick.AddListener (LoadMenu);
 		}
@@ -111,6 +108,11 @@ public class GameController : MonoBehaviour {
 		if (musicSlider != null) {
 			AudioListener.volume = musicSlider.value;
 		}
+	}
+
+	//Resets timeScale
+	public void resetTimeScale() {
+		Time.timeScale = 1;
 	}
 
 	//Back to menu

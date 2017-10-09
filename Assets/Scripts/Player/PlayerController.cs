@@ -5,31 +5,46 @@ using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour {
 	/****** Variables ******/
+
 	//Movement
+	[Header("Movement")]
 	private float offset = -90.0f;
 	private Vector3 moveDirection;
 	public float Speed = 12f;
 
 	//Throwing paperplanes
+	[Header("Throwing")]
 	public Transform bulletSpawn;
 	public GameObject bulletPrefab;
 	private float timeBetweenThrows = 2f;
 	private float timeBeforeThrow = 0;
+	public float MinBulletSpeed = 2f;
+	public float bulletSpeedMultiplier = 2f;
 
 	//Inventory
+	[Header("Inventory")]
 	private InventoryUIController iuic;
-	private int cups = 0;
+	public int cups = 0;
 	private int papers = 0;
-	private bool rfid = false;
+	public bool rfid = false;
+
+	//Score
+	private ScoreSystem ss;
 
 	void Awake(){
 		/****** Finds the InventoryUIController or adds one *******/
 		if (this.gameObject.GetComponent<InventoryUIController> () != null) {
 			iuic = this.gameObject.GetComponent<InventoryUIController> ();
 		} else {
-			iuic = gameObject.AddComponent (typeof(InventoryUIController)) as InventoryUIController;
+			iuic = this.gameObject.AddComponent (typeof(InventoryUIController)) as InventoryUIController;
+		}
+		if (this.gameObject.GetComponent<ScoreSystem> () != null) {
+			ss = this.gameObject.GetComponent<ScoreSystem> ();
+		} else {
+			ss = this.gameObject.AddComponent (typeof(ScoreSystem)) as ScoreSystem;
 		}
 	}
+
 
 	void Start () {
 		//AddPapers (1);
@@ -52,7 +67,13 @@ public class PlayerController : MonoBehaviour {
 			timeBeforeThrow -= Time.deltaTime;
 		}
 		if (Input.GetButtonDown("Fire1") ) {
-			Fire ();
+			Vector3 mousePosition = Camera.main.ScreenToWorldPoint (Input.mousePosition);
+			mousePosition.z = 0;
+			Vector3 playerPos = transform.position;
+			playerPos.z = 0;
+			Vector3 distanceVector = mousePosition - playerPos;
+			float mouseDistance = distanceVector.magnitude;
+			Fire (mouseDistance*bulletSpeedMultiplier);
 		}
 	}
 
@@ -61,12 +82,26 @@ public class PlayerController : MonoBehaviour {
 	}
 
 	/****** Instantiates the paperplane and updates UI *****/
-	private void Fire() {
+	private void Fire(float bulletSpeed = default(float)) {
+		if (bulletSpeed < MinBulletSpeed)
+			bulletSpeed = MinBulletSpeed;
+
 		if (this.papers > 0 && timeBeforeThrow <= 0) {
-			Instantiate (bulletPrefab, bulletSpawn.position, bulletSpawn.rotation);
+			GameObject bullet = Instantiate (bulletPrefab, bulletSpawn.position, bulletSpawn.rotation);
+			bullet.GetComponent<Bullet> ().speed = bulletSpeed;
 			timeBeforeThrow = timeBetweenThrows;
 			this.papers--;
 			iuic.SetPapersAmmount (papers);
+		}
+	}
+
+	public void SetRfid (bool hasRfid) {
+		if (hasRfid) {
+			iuic.ShowKey();
+			rfid = true;
+		}else{
+			iuic.HideKey();
+			rfid = false;
 		}
 	}
 
@@ -76,14 +111,26 @@ public class PlayerController : MonoBehaviour {
 			other.gameObject.SetActive (false);
 			cups++;
 			iuic.SetCupsAmmount (cups);
+			ss.score += 10;
+			ss.SetScoreText();
+
+
 		}
 		if (other.gameObject.CompareTag ("Paper")) {
 			other.gameObject.SetActive (false);
 			papers++;
 			iuic.SetPapersAmmount (papers);
 		}
+		/*if(other.gameObject.CompareTag("Key")){
+			other.gameObject.SetActive(false);
+			iuic.HideKey();
+			iuic.ShowKey();
+		}*/
 	}
+
 }
+
+
 
 
 

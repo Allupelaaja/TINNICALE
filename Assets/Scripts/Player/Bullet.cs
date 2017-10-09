@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Bullet : MonoBehaviour {
 
-	private float speed = 10f;
+	public float speed = 10f;
 	private float timeToDestroy = 5f;
 	private Vector3 direction;
 	private float time;

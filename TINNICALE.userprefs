@@ -1,13 +1,19 @@
 ﻿<Properties StartupItem="Assembly-CSharp.csproj">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Unity.Instance.Unity Editor" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\Dialogue\DialogSystem.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\QuestController.cs">
     <Files>
-      <File FileName="Assets\Scripts\GameController.cs" Line="86" Column="29" />
+      <File FileName="Assets\Scripts\GameController.cs" Line="37" Column="1" />
       <File FileName="Assets\Scripts\MinimapToggle.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\InventoryUIController.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\Player\PlayerController.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\Dialogue\DialogSystem.cs" Line="20" Column="1" />
+      <File FileName="Assets\Scripts\InventoryUIController.cs" Line="27" Column="25" />
+      <File FileName="Assets\Scripts\Dialogue\DialogSystem.cs" Line="34" Column="28" />
       <File FileName="Assets\Scripts\ObjectSaver.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\Player\Bullet.cs" Line="7" Column="8" />
+      <File FileName="Assets\Scripts\GameVictory.cs" Line="14" Column="43" />
+      <File FileName="Assets\Scripts\ScoreSystem.cs" Line="29" Column="34" />
+      <File FileName="Assets\Scripts\VictoryWindow.cs" Line="16" Column="35" />
+      <File FileName="Assets\Scripts\Player\PlayerController.cs" Line="75" Column="51" />
+      <File FileName="Assets\Scripts\Door.cs" Line="14" Column="55" />
+      <File FileName="Assets\Scripts\QuestController.cs" Line="9" Column="58" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
