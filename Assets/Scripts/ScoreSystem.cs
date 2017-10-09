@@ -36,7 +36,6 @@ public class ScoreSystem : MonoBehaviour {
 		time += Time.deltaTime;
 		//Debug.Log (time);
 		if (time >= timeToTakePoints) {
-			Debug.Log (time);
 			//score -= TimerPoints;
 			TakePoints(TimerPoints);
 			time = 0;

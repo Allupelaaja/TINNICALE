@@ -82,7 +82,6 @@ public class GameController : MonoBehaviour {
 		dialogBox.SetActive (true);
 	}
 
-	//Hides The Dialog
 	public void HideDialogBox() {
 		dialogBox.SetActive (false);
 	}
@@ -112,6 +111,11 @@ public class GameController : MonoBehaviour {
 		if (musicSlider != null) {
 			AudioListener.volume = musicSlider.value;
 		}
+	}
+
+	//Resets timeScale
+	public void resetTimeScale() {
+		Time.timeScale = 1;
 	}
 
 	//Back to menu

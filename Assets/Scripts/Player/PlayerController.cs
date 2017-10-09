@@ -86,7 +86,7 @@ public class PlayerController : MonoBehaviour {
 	private void Fire(float bulletSpeed = default(float)) {
 		if (bulletSpeed < MinBulletSpeed)
 			bulletSpeed = MinBulletSpeed;
-		
+
 		if (this.papers > 0 && timeBeforeThrow <= 0) {
 			GameObject bullet = Instantiate (bulletPrefab, bulletSpawn.position, bulletSpawn.rotation);
 			bullet.GetComponent<Bullet> ().speed = bulletSpeed;
@@ -112,11 +112,11 @@ public class PlayerController : MonoBehaviour {
 			papers++;
 			iuic.SetPapersAmmount (papers);
 		}
-		if(other.gameObject.CompareTag("Key")){
+		/*if(other.gameObject.CompareTag("Key")){
 			other.gameObject.SetActive(false);
 			iuic.HideKey();
 			iuic.ShowKey();
-		}
+		}*/
 	}
 
 }

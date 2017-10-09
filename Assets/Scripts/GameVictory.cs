@@ -4,10 +4,19 @@ using UnityEngine;
 
 public class GameVictory : MonoBehaviour {
 
-	private GameObject victoryWindow;
+	public GameObject victoryWindow;
+	private ScoreSystem ss;
 
-	void OnTriggerEnter(Collider other) {
-		victoryWindow.GetComponent<VictoryWindow> ().SetScore (1000000);
-		Instantiate (victoryWindow, GameObject.Find("Canvas").transform);
+	void Start() {
+		ss = GameObject.Find ("Player").GetComponent<ScoreSystem>();
+	}
+
+	void OnTriggerEnter2D(Collider2D other) {
+		Debug.Log ("qwerftgyhikol");
+		if(other.tag.Equals("Player")){
+			Time.timeScale = 0;
+			victoryWindow.GetComponent<VictoryWindow> ().SetScore (ss.score);
+			Instantiate (victoryWindow, GameObject.Find("Canvas").transform);
+		}
 	}
 }
