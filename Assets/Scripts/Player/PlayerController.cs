@@ -22,10 +22,11 @@ public class PlayerController : MonoBehaviour {
 	public float bulletSpeedMultiplier = 2f;
 
 	//Inventory
+	[Header("Inventory")]
 	private InventoryUIController iuic;
-	private int cups = 0;
+	public int cups = 0;
 	private int papers = 0;
-	private bool rfid = false;
+	public bool rfid = false;
 
 	//Score
 	private ScoreSystem ss;
@@ -72,8 +73,6 @@ public class PlayerController : MonoBehaviour {
 			playerPos.z = 0;
 			Vector3 distanceVector = mousePosition - playerPos;
 			float mouseDistance = distanceVector.magnitude;
-			Debug.Log (mouseDistance);
-
 			Fire (mouseDistance*bulletSpeedMultiplier);
 		}
 	}
@@ -93,6 +92,16 @@ public class PlayerController : MonoBehaviour {
 			timeBeforeThrow = timeBetweenThrows;
 			this.papers--;
 			iuic.SetPapersAmmount (papers);
+		}
+	}
+
+	public void SetRfid (bool hasRfid) {
+		if (hasRfid) {
+			iuic.ShowKey();
+			rfid = true;
+		}else{
+			iuic.HideKey();
+			rfid = false;
 		}
 	}
 

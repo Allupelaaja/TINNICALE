@@ -12,7 +12,6 @@ public class GameVictory : MonoBehaviour {
 	}
 
 	void OnTriggerEnter2D(Collider2D other) {
-		Debug.Log ("qwerftgyhikol");
 		if(other.tag.Equals("Player")){
 			Time.timeScale = 0;
 			victoryWindow.GetComponent<VictoryWindow> ().SetScore (ss.score);

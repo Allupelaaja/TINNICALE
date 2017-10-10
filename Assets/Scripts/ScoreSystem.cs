@@ -26,8 +26,7 @@ public class ScoreSystem : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		TimerPoints = MaxTimerPoints/500;
-		timeToTakePoints = MaxTime/5000;
-		Debug.Log (timeToTakePoints);
+		timeToTakePoints = MaxTime/500;
 		score = MaxTimerPoints;
 		SetScoreText ();
 	}

@@ -782,11 +782,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Speed: 3
-  bulletSpawn: {fileID: 63079970}
+  bulletSpawn: {fileID: 1413968640}
   bulletPrefab: {fileID: 1428045118797484, guid: e8549a2db051bce4fb8bd8563183e57f,
     type: 2}
   MinBulletSpeed: 2
   bulletSpeedMultiplier: 2
+  cups: 0
+  rfid: 0
 --- !u!4 &63079970
 Transform:
   m_ObjectHideFlags: 0
@@ -794,11 +796,12 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 63079968}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.71, y: -2.24, z: 0}
+  m_LocalPosition: {x: -0.56, y: -2.9, z: 0}
   m_LocalScale: {x: 5, y: 5, z: 1}
   m_Children:
   - {fileID: 1905049254}
   - {fileID: 1744654655}
+  - {fileID: 1413968640}
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1643,7 +1646,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0.5}
   m_AnchorMax: {x: 1, y: 0.5}
-  m_AnchoredPosition: {x: -158, y: 0}
+  m_AnchoredPosition: {x: -180, y: 0}
   m_SizeDelta: {x: 35, y: 35}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &127372413
@@ -5998,6 +6001,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 189db63063a2cd94b84b22b6341677fc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  SerialNumber: 0
   gc: {fileID: 0}
   Name: Student
   Dialogues:
@@ -6228,6 +6232,49 @@ BoxCollider2D:
   m_AutoTiling: 0
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
+  m_EdgeRadius: 0
+--- !u!1 &435101242 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1068126519280710, guid: 8a5d89e6154cf984786d89bb5218886f,
+    type: 2}
+  m_PrefabInternal: {fileID: 947182835}
+--- !u!114 &435101243
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 435101242}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d059c660be6386b49a5d95db7a787d8c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mass: 0
+  rb: {fileID: 0}
+--- !u!61 &435101244
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 435101242}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: -0.0012381822}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 0.32, y: 0.09}
+    newSize: {x: 0.32, y: 0.09}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 0.32, y: 0.4393138}
   m_EdgeRadius: 0
 --- !u!1 &435132200
 GameObject:
@@ -6499,6 +6546,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 189db63063a2cd94b84b22b6341677fc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  SerialNumber: 0
   gc: {fileID: 0}
   Name: Student
   Dialogues:
@@ -6693,6 +6741,7 @@ GameObject:
   - component: {fileID: 467513581}
   - component: {fileID: 467513583}
   - component: {fileID: 467513584}
+  - component: {fileID: 467513585}
   m_Layer: 0
   m_Name: NPC_Caretaker
   m_TagString: Untagged
@@ -6766,12 +6815,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 189db63063a2cd94b84b22b6341677fc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  SerialNumber: 0
   gc: {fileID: 0}
   Name: Caretaker
   Dialogues:
   - Hey!
   - Don't have a rfid-key yet?
-  - Get my work done and I may give you one.
+  - Get me a coffee cup and I'll give you one.
   TimeOnDialog: 020000000300000003000000
 --- !u!58 &467513584
 CircleCollider2D:
@@ -6788,6 +6838,17 @@ CircleCollider2D:
   m_Offset: {x: -0.01649979, y: 0.0013072543}
   serializedVersion: 2
   m_Radius: 0.43344846
+--- !u!114 &467513585
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 467513580}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6f61660f3f270c2469427fa61d2270f2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &468879470
 GameObject:
   m_ObjectHideFlags: 0
@@ -7259,8 +7320,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 0, y: 0.5}
-  m_AnchoredPosition: {x: 16, y: 0}
-  m_SizeDelta: {x: 32, y: 32}
+  m_AnchoredPosition: {x: 17.499996, y: 0}
+  m_SizeDelta: {x: 27.432, y: 32}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &513901896
 MonoBehaviour:
@@ -7281,7 +7342,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
+  m_Sprite: {fileID: 21300000, guid: ce684e8a0896d824789a8d5ec2bb40fc, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -7474,6 +7535,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 189db63063a2cd94b84b22b6341677fc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  SerialNumber: 0
   gc: {fileID: 0}
   Name: Student
   Dialogues:
@@ -8125,6 +8187,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 189db63063a2cd94b84b22b6341677fc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  SerialNumber: 0
   gc: {fileID: 0}
   Name: You
   Dialogues:
@@ -8543,6 +8606,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 189db63063a2cd94b84b22b6341677fc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  SerialNumber: 0
   gc: {fileID: 0}
   Name: Student
   Dialogues:
@@ -9255,6 +9319,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 189db63063a2cd94b84b22b6341677fc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  SerialNumber: 0
   gc: {fileID: 0}
   Name: Student
   Dialogues:
@@ -9703,6 +9768,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 189db63063a2cd94b84b22b6341677fc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  SerialNumber: 0
   gc: {fileID: 0}
   Name: Student
   Dialogues:
@@ -10361,6 +10427,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 189db63063a2cd94b84b22b6341677fc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  SerialNumber: 0
   gc: {fileID: 0}
   Name: Student
   Dialogues:
@@ -12767,6 +12834,21 @@ Prefab:
       propertyPath: m_Color.r
       value: 0.6392157
       objectReference: {fileID: 0}
+    - target: {fileID: 50298355721471260, guid: 8a5d89e6154cf984786d89bb5218886f,
+        type: 2}
+      propertyPath: m_Mass
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 50298355721471260, guid: 8a5d89e6154cf984786d89bb5218886f,
+        type: 2}
+      propertyPath: m_Simulated
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 50298355721471260, guid: 8a5d89e6154cf984786d89bb5218886f,
+        type: 2}
+      propertyPath: m_UseAutoMass
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 8a5d89e6154cf984786d89bb5218886f, type: 2}
   m_IsPrefabParent: 0
@@ -13203,6 +13285,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 189db63063a2cd94b84b22b6341677fc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  SerialNumber: 0
   gc: {fileID: 0}
   Name: Student
   Dialogues:
@@ -13597,6 +13680,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 189db63063a2cd94b84b22b6341677fc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  SerialNumber: 0
   gc: {fileID: 0}
   Name: Student
   Dialogues:
@@ -14404,6 +14488,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 189db63063a2cd94b84b22b6341677fc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  SerialNumber: 0
   gc: {fileID: 0}
   Name: Student
   Dialogues:
@@ -15329,6 +15414,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 189db63063a2cd94b84b22b6341677fc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  SerialNumber: 0
   gc: {fileID: 0}
   Name: Cook
   Dialogues:
@@ -18564,6 +18650,34 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.5
+--- !u!1 &1413968639
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 1413968640}
+  m_Layer: 0
+  m_Name: PaperplaneSpawn
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1413968640
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1413968639}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.17, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 63079970}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1415727505
 GameObject:
   m_ObjectHideFlags: 0
@@ -19506,6 +19620,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 189db63063a2cd94b84b22b6341677fc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  SerialNumber: 0
   gc: {fileID: 0}
   Name: Cook
   Dialogues:
@@ -19803,6 +19918,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 189db63063a2cd94b84b22b6341677fc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  SerialNumber: 0
   gc: {fileID: 0}
   Name: Cook
   Dialogues:
@@ -20737,6 +20853,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 189db63063a2cd94b84b22b6341677fc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  SerialNumber: 0
   gc: {fileID: 0}
   Name: Student
   Dialogues:
@@ -21714,6 +21831,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 189db63063a2cd94b84b22b6341677fc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  SerialNumber: 0
   gc: {fileID: 0}
   Name: Student
   Dialogues:
@@ -21927,6 +22045,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 189db63063a2cd94b84b22b6341677fc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  SerialNumber: 0
   gc: {fileID: 0}
   Name: Librarian
   Dialogues:
@@ -23978,6 +24097,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 189db63063a2cd94b84b22b6341677fc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  SerialNumber: 0
   gc: {fileID: 0}
   Name: Student
   Dialogues:
@@ -25464,6 +25584,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 189db63063a2cd94b84b22b6341677fc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  SerialNumber: 0
   gc: {fileID: 0}
   Name: Student
   Dialogues:
@@ -25942,6 +26063,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 189db63063a2cd94b84b22b6341677fc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  SerialNumber: 0
   gc: {fileID: 0}
   Name: Student
   Dialogues:
@@ -26144,6 +26266,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 189db63063a2cd94b84b22b6341677fc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  SerialNumber: 0
   gc: {fileID: 0}
   Name: Student
   Dialogues:
@@ -26278,6 +26401,7 @@ GameObject:
   - component: {fileID: 2027373053}
   - component: {fileID: 2027373052}
   - component: {fileID: 2027373054}
+  - component: {fileID: 2027373055}
   m_Layer: 5
   m_Name: MinimapImage
   m_TagString: Untagged
@@ -26298,10 +26422,10 @@ RectTransform:
   m_Father: {fileID: 1595740731}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0.000015259, y: 0.19999}
-  m_SizeDelta: {x: 495.4, y: 495.4}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2027373052
 MonoBehaviour:
@@ -26346,6 +26470,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4209468f08c6e204998363c559e062c3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &2027373055
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2027373050}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -1254083943, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_AspectMode: 3
+  m_AspectRatio: 1
 --- !u!1 &2031063118
 GameObject:
   m_ObjectHideFlags: 0
@@ -26429,6 +26566,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 189db63063a2cd94b84b22b6341677fc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  SerialNumber: 0
   gc: {fileID: 0}
   Name: Student
   Dialogues:
