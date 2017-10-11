@@ -12,6 +12,10 @@ public class PlayerController : MonoBehaviour {
 	private Vector3 moveDirection;
 	public float Speed = 12f;
 
+	//MovementSound
+	private bool moving = false;
+	private AudioSource audio;
+
 	//Throwing paperplanes
 	[Header("Throwing")]
 	public Transform bulletSpawn;
@@ -43,6 +47,7 @@ public class PlayerController : MonoBehaviour {
 		} else {
 			ss = this.gameObject.AddComponent (typeof(ScoreSystem)) as ScoreSystem;
 		}
+		audio = GetComponent<AudioSource> ();
 	}
 
 
@@ -55,6 +60,16 @@ public class PlayerController : MonoBehaviour {
 		moveDirection = new Vector3 (Input.GetAxis ("Horizontal"), Input.GetAxis ("Vertical"), 0);
 		moveDirection *= Speed;
 		this.transform.Translate (moveDirection * Time.deltaTime, Space.World);
+
+		if (moveDirection != Vector3.zero) {
+			if (!moving) {
+				moving = true;
+				audio.Play ();
+			}
+		} else {
+			moving = false;
+			audio.Pause ();
+		}
 
 		Vector3 difference = Camera.main.ScreenToWorldPoint (Input.mousePosition) - transform.position;
 		difference.Normalize ();
